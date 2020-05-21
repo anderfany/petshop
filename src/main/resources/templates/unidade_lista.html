@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Lista de Unidades</h1>
+
+<ul>
+    <li th:each="unidade : ${unidades}">
+        <span th:text="${unidade.descricao}" />
+    </li>
+</ul>
+
+</body>
+</html>
