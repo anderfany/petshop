@@ -21,6 +21,7 @@ public class UnidadeDto {
     }
 
     public String getDescricao() {
+
         return String.format("%s - %s", nome, endereco);
     }
 

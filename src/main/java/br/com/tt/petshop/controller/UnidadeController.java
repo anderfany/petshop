@@ -31,6 +31,7 @@ public class UnidadeController {
 
     @RequestMapping("/admin/unidade/cadastro")
     public String getPaginaCadastro(){
+
         return "unidade_cadastro";
     }
 
