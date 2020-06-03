@@ -13,17 +13,17 @@ public class UnidadeService {
     private UnidadeRepository unidadeRepository;
 
     //Construtor
-    public UnidadeService(UnidadeRepository unidadeRepository){
+    public UnidadeService(UnidadeRepository unidadeRepository) {
         this.unidadeRepository = unidadeRepository;
     }
 
     //Metodo
-    public List<UnidadeDto> listarUnidades(){
+    public List<UnidadeDto> listarUnidades() {
         return unidadeRepository.listarUnidades();
     }
 
     //Metodo - como nao retorna nada, diz-se que ele retorna void
-    public void criarUnidade(UnidadeDto unidadeDto){
+    public void criarUnidade(UnidadeDto unidadeDto) {
         unidadeRepository.criarUnidade(unidadeDto);
     }
 
@@ -31,4 +31,9 @@ public class UnidadeService {
         return unidadeRepository.buscarPorId(idUnidade);
     }
 
+    public void atualizar(Long id, UnidadeDto unidadeDeEntrada) {
+        UnidadeDto unidadeSalva = this.buscarPorId(id);
+        unidadeSalva.atualizarInformacoes(unidadeDeEntrada);
+        unidadeRepository.salvar(unidadeSalva);
+    }
 }

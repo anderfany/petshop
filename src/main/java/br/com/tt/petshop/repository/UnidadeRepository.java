@@ -55,5 +55,10 @@ public class UnidadeRepository {
                                 rs.getString("endereco")));
     }
 
+    public void salvar(UnidadeDto unidade) {
+        jdbcTemplate.update("update UNIDADE set nome = ?, endereco = ? where id = ?",
+                unidade.getNome(), unidade.getEndereco(), unidade.getId());
+    }
+
 
 }

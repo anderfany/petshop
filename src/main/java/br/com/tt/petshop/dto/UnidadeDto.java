@@ -12,6 +12,10 @@ public class UnidadeDto {
         this.endereco = endereco;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -23,6 +27,11 @@ public class UnidadeDto {
     public String getDescricao() {
 
         return String.format("%s - %s", nome, endereco);
+    }
+
+    public void atualizarInformacoes(UnidadeDto unidadeDeEntrada) {
+        this.nome = unidadeDeEntrada.nome;
+        this.endereco = unidadeDeEntrada.endereco;
     }
 
 }
