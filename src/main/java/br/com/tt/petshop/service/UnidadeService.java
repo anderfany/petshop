@@ -31,9 +31,9 @@ public class UnidadeService {
         return unidadeRepository.buscarPorId(idUnidade);
     }
 
-    public void atualizar(Long id, UnidadeDto unidadeDeEntrada) {
-        UnidadeDto unidadeSalva = this.buscarPorId(id);
-        unidadeSalva.atualizarInformacoes(unidadeDeEntrada);
-        unidadeRepository.salvar(unidadeSalva);
+    public void atualizar(Long id, UnidadeDto unidadeParaAtualizar) {
+        UnidadeDto unidadeSalvaNoBano = this.buscarPorId(id);
+        unidadeSalvaNoBano.atualizarDadosUnidadeNaMemoria(unidadeParaAtualizar);
+        unidadeRepository.salvar(unidadeSalvaNoBano);
     }
 }

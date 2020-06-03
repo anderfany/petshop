@@ -37,4 +37,11 @@ public class ClienteService {
     public Cliente buscaPorId(Integer id){
         return this.clienteRepository.buscarPorId(id);
     }
+
+    @Transactional
+    public void atualizar(Integer id, Cliente clienteParaAtualizar) {
+        Cliente clienteSalvoNoBanco = this.buscaPorId(id);
+        clienteSalvoNoBanco.atualizarDadosClienteNaMemoria(clienteParaAtualizar);
+        clienteRepository.salvar(clienteSalvoNoBanco);
+    }
 }

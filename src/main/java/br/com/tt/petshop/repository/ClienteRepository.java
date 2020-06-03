@@ -30,4 +30,8 @@ public class ClienteRepository {
         em.persist(cliente);
     }
 
+    public void salvar(Cliente cliente){
+        em.persist(cliente);
+    }
+
 }

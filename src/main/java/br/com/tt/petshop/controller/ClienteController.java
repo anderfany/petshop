@@ -4,10 +4,10 @@ import br.com.tt.petshop.dto.UnidadeDto;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.ClienteRepository;
 import br.com.tt.petshop.service.ClienteService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -46,8 +46,6 @@ public class ClienteController {
 
         return new ModelAndView("cliente_cadastro");
     }
-
-
 
 
 }

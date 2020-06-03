@@ -1,5 +1,7 @@
 package br.com.tt.petshop.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +10,7 @@ public class Cliente {
     Cliente(){//Construtor default para o Hibernate funcionar!!
     }
 
+    @JsonCreator
     public Cliente(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
@@ -33,6 +36,11 @@ public class Cliente {
 
     public String getCpf(){
         return cpf;
+    }
+
+    public void atualizarDadosClienteNaMemoria(Cliente clienteParaAtualizar) {
+        this.nome = clienteParaAtualizar.nome;
+        this.cpf = clienteParaAtualizar.cpf;
     }
 
 }
