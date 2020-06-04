@@ -35,9 +35,9 @@ public class Cliente {
         return cpf;
     }
 
-    public String getDescricao() {
-        return String.format("Nome: %s Cpf: %s",this.nome, this.cpf);
-    }
+    //public String getDescricao() {
+    //    return String.format("Nome: %s Cpf: %s",this.nome, this.cpf);
+    //}
 
     public void atualizarDadosClienteNaMemoria(ClienteAtualizacaoDto clienteParaAtualizar) {
         this.nome = clienteParaAtualizar.getNome();
