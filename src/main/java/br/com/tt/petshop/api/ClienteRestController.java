@@ -38,8 +38,8 @@ public class ClienteRestController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity removerPorId(@PathVariable("id") Integer id){
-        clienteService.removerPorId(id);
+    public ResponseEntity remover(@PathVariable("id") Integer id){
+        clienteService.remover(id);
         return ResponseEntity.noContent().build();
     }
 }
