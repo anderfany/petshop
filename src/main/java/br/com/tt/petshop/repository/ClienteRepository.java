@@ -1,6 +1,5 @@
 package br.com.tt.petshop.repository;
 
-import br.com.tt.petshop.dto.ClienteEntradaDto;
 import br.com.tt.petshop.model.Cliente;
 import org.springframework.stereotype.Repository;
 
@@ -25,8 +24,9 @@ public class ClienteRepository {
         return em.find(Cliente.class, id);
     }
 
-    public void criarCliente(Cliente clienteConvertidoEntidadeParaCriar){
+    public Cliente criarCliente(Cliente clienteConvertidoEntidadeParaCriar){
         em.persist(clienteConvertidoEntidadeParaCriar);
+        return clienteConvertidoEntidadeParaCriar;
     }
 
     public void salvar(Cliente cliente){

@@ -27,6 +27,7 @@ public class Cliente {
 
     //Construtor
     public Cliente(ClienteEntradaDto clienteEntrada) {
+
         this.atualizarDadosClienteNaMemoria(clienteEntrada);
     }
 

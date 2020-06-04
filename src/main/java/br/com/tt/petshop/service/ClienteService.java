@@ -22,20 +22,23 @@ public class ClienteService {
     }
 
     public List<Cliente> listarClientes(){
+
         return this.clienteRepository.listarClientes();
     }
 
     @Transactional//Deixa tudo abaixo de uma transação, ou seja, propricia ROLLBACK!
     //Poderia estar no Repository também, mas é mais comum no Service.
-    public void criarCliente(ClienteEntradaDto clienteEntrada) {
+    public Cliente criarCliente(ClienteEntradaDto clienteParaCriar) {
 
-        if( ! cpfValidator.verificaSeCpfValido(cliente.getCpf())){
+        if( ! cpfValidator.verificaSeCpfValido(clienteParaCriar.getCpf())){
             throw new CpfInvalidoException();
         }
-        clienteRepository.criarCliente(cliente);
+        Cliente clienteConvertidoDtoParaEntidade = new Cliente(clienteParaCriar);
+        return clienteRepository.criarCliente(clienteConvertidoDtoParaEntidade);
     }
 
     public Cliente buscaPorId(Integer id){
+
         return this.clienteRepository.buscarPorId(id);
     }
 
@@ -56,6 +59,7 @@ public class ClienteService {
 
     @Transactional
     public void removerPorId(Integer id) {
+
         clienteRepository.removerPorId(id);
     }
 }
