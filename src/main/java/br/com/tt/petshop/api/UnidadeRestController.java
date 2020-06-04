@@ -47,7 +47,7 @@ public class UnidadeRestController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity criar(@RequestBody UnidadeEntradaDto unidadeParaCriar){
         unidadeService.criarUnidade(unidadeParaCriar);
-        URI location = URI.create("/unidades/{id}");
+        URI location = URI.create("/unidades/");
         return ResponseEntity.created(location).build();
     }
 }
