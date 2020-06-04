@@ -17,10 +17,12 @@ public class UnidadeDto {
     }
 
     public String getNome() {
+
         return nome;
     }
 
     public String getEndereco() {
+
         return endereco;
     }
 

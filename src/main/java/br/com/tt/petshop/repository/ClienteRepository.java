@@ -12,6 +12,7 @@ public class ClienteRepository {
     private EntityManager em;
 
     public ClienteRepository(EntityManager em){
+
         this.em = em;
     }
 
@@ -21,6 +22,7 @@ public class ClienteRepository {
     }
 
     public Cliente buscarPorId(Integer id){
+
         return em.find(Cliente.class, id);
     }
 
@@ -30,10 +32,12 @@ public class ClienteRepository {
     }
 
     public void salvar(Cliente cliente){
+
         em.persist(cliente);
     }
 
     public void remover(Cliente clienteASerRemovido){
+
         em.remove(clienteASerRemovido);
     }
 

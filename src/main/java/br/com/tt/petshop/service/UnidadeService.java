@@ -15,20 +15,24 @@ public class UnidadeService {
 
     //Construtor
     public UnidadeService(UnidadeRepository unidadeRepository) {
+
         this.unidadeRepository = unidadeRepository;
     }
 
     //Metodo
     public List<UnidadeDto> listarUnidades() {
+
         return unidadeRepository.listarUnidades();
     }
 
     //Metodo - como nao retorna nada, diz-se que ele retorna void
     public void criarUnidade(UnidadeEntradaDto unidadeDto) {
+
         unidadeRepository.criarUnidade(unidadeDto);
     }
 
     public UnidadeDto buscarPorId(Long idUnidade) {
+
         return unidadeRepository.buscarPorId(idUnidade);
     }
 
@@ -38,6 +42,7 @@ public class UnidadeService {
         unidadeRepository.salvar(unidadeSalvaNoBano);
     }
     public void remover(Long id){
+
         unidadeRepository.remover(id);
     }
 }
