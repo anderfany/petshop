@@ -36,4 +36,9 @@ public class UnidadeRestController {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity remover(@PathVariable("id") Long id){
+        unidadeService.remover(id);
+        return ResponseEntity.noContent().build();
+    }
 }

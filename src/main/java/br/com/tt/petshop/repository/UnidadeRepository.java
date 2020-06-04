@@ -60,5 +60,9 @@ public class UnidadeRepository {
                 unidade.getNome(), unidade.getEndereco(), unidade.getId());
     }
 
+    public void remover(Long id){
+        jdbcTemplate.update("delete from UNIDADE where id = ?", id);
+    }
+
 
 }

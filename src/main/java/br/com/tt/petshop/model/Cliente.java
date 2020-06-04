@@ -1,5 +1,6 @@
 package br.com.tt.petshop.model;
 
+import br.com.tt.petshop.dto.ClienteAtualizacaoDto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import javax.persistence.*;
@@ -10,7 +11,7 @@ public class Cliente {
     Cliente(){//Construtor default para o Hibernate funcionar!!
     }
 
-    @JsonCreator
+    //@JsonCreator Não precisa mais, pois agora temos o ClienteAtualizacaoDto
     public Cliente(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
@@ -38,9 +39,9 @@ public class Cliente {
         return cpf;
     }
 
-    public void atualizarDadosClienteNaMemoria(Cliente clienteParaAtualizar) {
-        this.nome = clienteParaAtualizar.nome;
-        this.cpf = clienteParaAtualizar.cpf;
+    public void atualizarDadosClienteNaMemoria(ClienteAtualizacaoDto clienteParaAtualizar) {
+        this.nome = clienteParaAtualizar.getNome();
+        this.cpf = clienteParaAtualizar.getCpf();
     }
 
 }

@@ -1,5 +1,6 @@
 package br.com.tt.petshop.service;
 
+import br.com.tt.petshop.dto.ClienteAtualizacaoDto;
 import br.com.tt.petshop.exception.CpfInvalidoException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.ClienteRepository;
@@ -39,9 +40,22 @@ public class ClienteService {
     }
 
     @Transactional
-    public void atualizar(Integer id, Cliente clienteParaAtualizar) {
+    public void atualizar(Integer id, ClienteAtualizacaoDto clienteParaAtualizar) {
         Cliente clienteSalvoNoBanco = this.buscaPorId(id);
         clienteSalvoNoBanco.atualizarDadosClienteNaMemoria(clienteParaAtualizar);
         clienteRepository.salvar(clienteSalvoNoBanco);
+    }
+
+    @Transactional
+    public void remover(Integer id){
+        Cliente clienteASerRemovido = this.buscaPorId(id);
+        if (clienteRepository.buscarPorId(id) != null) {
+            clienteRepository.remover(clienteASerRemovido);
+        }
+    }
+
+    @Transactional
+    public void removerPorId(Integer id){
+        clienteRepository.removerPorId(id);
     }
 }

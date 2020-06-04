@@ -36,4 +36,7 @@ public class UnidadeService {
         unidadeSalvaNoBano.atualizarDadosUnidadeNaMemoria(unidadeParaAtualizar);
         unidadeRepository.salvar(unidadeSalvaNoBano);
     }
+    public void remover(Long id){
+        unidadeRepository.remover(id);
+    }
 }

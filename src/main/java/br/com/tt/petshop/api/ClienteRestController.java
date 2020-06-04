@@ -1,7 +1,9 @@
 package br.com.tt.petshop.api;
 
+import br.com.tt.petshop.dto.ClienteAtualizacaoDto;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.service.ClienteService;
+import org.apache.coyote.Response;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,10 +30,16 @@ public class ClienteRestController {
         return this.clienteService.buscaPorId(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Integer id,
-                                    @RequestBody Cliente clienteParaAtualizar){
+                                    @RequestBody ClienteAtualizacaoDto clienteParaAtualizar){
         clienteService.atualizar(id, clienteParaAtualizar);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity removerPorId(@PathVariable("id") Integer id){
+        clienteService.removerPorId(id);
         return ResponseEntity.noContent().build();
     }
 }
