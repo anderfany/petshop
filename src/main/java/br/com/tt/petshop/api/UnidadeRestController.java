@@ -1,6 +1,6 @@
 package br.com.tt.petshop.api;
 
-import br.com.tt.petshop.dto.UnidadeCriacaoDto;
+import br.com.tt.petshop.dto.UnidadeEntradaDto;
 import br.com.tt.petshop.dto.UnidadeDto;
 import br.com.tt.petshop.service.UnidadeService;
 import org.springframework.http.MediaType;
@@ -45,7 +45,7 @@ public class UnidadeRestController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity criar(@RequestBody UnidadeCriacaoDto dto){
+    public ResponseEntity criar(@RequestBody UnidadeEntradaDto dto){
         unidadeService.criarUnidade(dto);
         URI location = URI.create("/unidades/{id}");
         return ResponseEntity.created(location).build();

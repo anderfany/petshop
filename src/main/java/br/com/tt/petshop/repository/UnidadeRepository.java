@@ -1,6 +1,7 @@
 package br.com.tt.petshop.repository;
 
 import br.com.tt.petshop.dto.UnidadeDto;
+import br.com.tt.petshop.dto.UnidadeEntradaDto;
 import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -34,7 +35,7 @@ public class UnidadeRepository {
                 );
     }
 
-    public void criarUnidade(UnidadeDto unidadeDto){
+    public void criarUnidade(UnidadeEntradaDto unidadeDto){
         String nome = unidadeDto.getNome();
         String endereco = unidadeDto.getEndereco();
         jdbcTemplate.update(
