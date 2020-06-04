@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.attribute.standard.Media;
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -40,5 +42,12 @@ public class ClienteRestController {
     public ResponseEntity remover(@PathVariable("id") Integer id){
         clienteService.remover(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity criar(@RequestBody ClienteEntradaDto clienteParaCriar){
+        clienteService.criarCliente(clienteParaCriar);
+        URI location = URI.create("/clientes/");
+        return ResponseEntity.created(location).build();
     }
 }
