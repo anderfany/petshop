@@ -31,12 +31,12 @@ public class Cliente {
     @Column(name = "nro_cpf", columnDefinition = "VARCHAR(14)", nullable = false)
     private String cpf;
 
-    public String getDescricao(){
-        return String.format("%s (%s)",this.nome, this.cpf);
-    }
-
     public String getCpf(){
         return cpf;
+    }
+
+    public String getDescricao() {
+        return String.format("Nome: %s Cpf: %s",this.nome, this.cpf);
     }
 
     public void atualizarDadosClienteNaMemoria(ClienteAtualizacaoDto clienteParaAtualizar) {

@@ -16,6 +16,10 @@ public class ClienteAtualizacaoDto {
     public String getCpf() {
         return cpf;
     }
+
+    public String getDescricao() {
+        return String.format("Nome: %s Cpf: %s",this.nome, this.cpf);
+    }
 }
 
 

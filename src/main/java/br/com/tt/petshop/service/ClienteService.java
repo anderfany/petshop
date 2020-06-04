@@ -55,7 +55,7 @@ public class ClienteService {
     }
 
     @Transactional
-    public void removerPorId(Integer id){
+    public void removerPorId(Integer id) {
         clienteRepository.removerPorId(id);
     }
 }
