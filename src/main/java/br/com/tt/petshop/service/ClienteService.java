@@ -49,7 +49,7 @@ public class ClienteService {
     @Transactional
     public void remover(Integer id){
         Cliente clienteASerRemovido = this.buscaPorId(id);
-        if (clienteRepository.buscarPorId(id) != null) {
+        if (clienteASerRemovido != null) {
             clienteRepository.remover(clienteASerRemovido);
         }
     }
