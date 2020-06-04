@@ -1,9 +1,8 @@
 package br.com.tt.petshop.api;
 
-import br.com.tt.petshop.dto.ClienteAtualizacaoDto;
+import br.com.tt.petshop.dto.ClienteEntradaDto;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.service.ClienteService;
-import org.apache.coyote.Response;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +31,7 @@ public class ClienteRestController {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Integer id,
-                                    @RequestBody ClienteAtualizacaoDto clienteParaAtualizar){
+                                    @RequestBody ClienteEntradaDto clienteParaAtualizar){
         clienteService.atualizar(id, clienteParaAtualizar);
         return ResponseEntity.noContent().build();
     }

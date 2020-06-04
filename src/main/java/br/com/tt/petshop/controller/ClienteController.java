@@ -1,10 +1,8 @@
 package br.com.tt.petshop.controller;
 
-import br.com.tt.petshop.dto.UnidadeDto;
+import br.com.tt.petshop.dto.ClienteEntradaDto;
 import br.com.tt.petshop.model.Cliente;
-import br.com.tt.petshop.repository.ClienteRepository;
 import br.com.tt.petshop.service.ClienteService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +17,6 @@ public class ClienteController {
     private ClienteService clienteService;
 
     public ClienteController(ClienteService clienteService) {
-
         this.clienteService = clienteService;
     }
 
@@ -28,7 +25,7 @@ public class ClienteController {
 
         List<Cliente> clientes = clienteService.listarClientes();
         model.addAttribute("clientes", clientes);
-
+        
         return "cliente_lista";
     }
 
@@ -41,8 +38,8 @@ public class ClienteController {
     public ModelAndView acaoCadastrar(
                                       @RequestParam("nome") String nome,
                                       @RequestParam("cpf") String cpf){
-        Cliente cliente = new Cliente(nome, cpf);
-        clienteService.criarCliente(cliente);
+        ClienteEntradaDto clienteEntrada = new ClienteEntradaDto(nome, cpf);
+        clienteService.criarCliente(clienteEntrada);
 
         return new ModelAndView("cliente_cadastro");
     }

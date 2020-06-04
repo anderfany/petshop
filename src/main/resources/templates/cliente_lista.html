@@ -8,8 +8,8 @@
 <h1>Lista de Clientes</h1>
 
 <ul>
-    <li th:each="cli : ${clientes}">
-        <span th:text="${cli.descricao}" />
+    <li th:each="cliente : ${clientes}">
+        <span th:text="${cliente.descricao}" />
     </li>
 </ul>
 

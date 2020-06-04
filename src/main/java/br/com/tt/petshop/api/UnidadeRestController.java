@@ -1,11 +1,13 @@
 package br.com.tt.petshop.api;
 
+import br.com.tt.petshop.dto.UnidadeCriacaoDto;
 import br.com.tt.petshop.dto.UnidadeDto;
 import br.com.tt.petshop.service.UnidadeService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -15,7 +17,7 @@ public class UnidadeRestController {
     private UnidadeService unidadeService;
 
     //construtor
-    public UnidadeRestController(UnidadeService unidadeService){
+    public UnidadeRestController(UnidadeService unidadeService) {
         this.unidadeService = unidadeService;
     }
 
@@ -40,5 +42,12 @@ public class UnidadeRestController {
     public ResponseEntity remover(@PathVariable("id") Long id){
         unidadeService.remover(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity criar(@RequestBody UnidadeCriacaoDto dto){
+        unidadeService.criarUnidade(dto);
+        URI location = URI.create("/unidades/{id}");
+        return ResponseEntity.created(location).build();
     }
 }

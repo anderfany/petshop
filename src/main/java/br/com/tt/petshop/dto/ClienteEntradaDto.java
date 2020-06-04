@@ -1,10 +1,10 @@
 package br.com.tt.petshop.dto;
 
-public class ClienteAtualizacaoDto {
+public class ClienteEntradaDto {
     private String nome;
     private String cpf;
 
-    public ClienteAtualizacaoDto(String nome, String cpf) {
+    public ClienteEntradaDto(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
     }

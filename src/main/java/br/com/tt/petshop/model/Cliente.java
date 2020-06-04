@@ -1,21 +1,11 @@
 package br.com.tt.petshop.model;
 
-import br.com.tt.petshop.dto.ClienteAtualizacaoDto;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import br.com.tt.petshop.dto.ClienteEntradaDto;
 
 import javax.persistence.*;
 
 @Entity
 public class Cliente {
-
-    Cliente(){//Construtor default para o Hibernate funcionar!!
-    }
-
-    //@JsonCreator Não precisa mais, pois agora temos o ClienteAtualizacaoDto
-    public Cliente(String nome, String cpf) {
-        this.nome = nome;
-        this.cpf = cpf;
-    }
 
     //Construtor - Declarado assim para funcionar o JPQL
     @Id
@@ -31,15 +21,26 @@ public class Cliente {
     @Column(name = "nro_cpf", columnDefinition = "VARCHAR(14)", nullable = false)
     private String cpf;
 
-    public String getCpf(){
+    //Construtor default para o Hibernate funcionar!!
+    Cliente(){
+    }
+
+    //Construtor
+    public Cliente(ClienteEntradaDto clienteEntrada) {
+        this.atualizarDadosClienteNaMemoria(clienteEntrada);
+    }
+
+    public String getCpf() {
+
         return cpf;
     }
 
-    //public String getDescricao() {
-    //    return String.format("Nome: %s Cpf: %s",this.nome, this.cpf);
-    //}
+    public String getDescricao() {
 
-    public void atualizarDadosClienteNaMemoria(ClienteAtualizacaoDto clienteParaAtualizar) {
+        return String.format("Nome: %s Cpf: %s",this.nome, this.cpf);
+    }
+
+    public void atualizarDadosClienteNaMemoria(ClienteEntradaDto clienteParaAtualizar) {
         this.nome = clienteParaAtualizar.getNome();
         this.cpf = clienteParaAtualizar.getCpf();
     }
