@@ -31,7 +31,7 @@ public class ClienteService {
     public Cliente criarCliente(ClienteEntradaDto clienteParaCriar) {
 
         if( ! cpfValidator.verificaSeCpfValido(clienteParaCriar.getCpf())){
-            throw new CpfInvalidoException();
+            throw new CpfInvalidoException("O formato do CPF está incorreto");
         }
         Cliente clienteConvertidoDtoParaEntidade = new Cliente(clienteParaCriar);
         return clienteRepository.criarCliente(clienteConvertidoDtoParaEntidade);
