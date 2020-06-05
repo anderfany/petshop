@@ -51,6 +51,8 @@ public class ClienteRestController {
     public ResponseEntity criar(@RequestBody ClienteEntradaDto clienteParaCriar){
         clienteService.criarCliente(clienteParaCriar);
         URI location = URI.create("/clientes/");
-        return ResponseEntity.created(location).build();
+        return ResponseEntity
+                .created(location).
+                build();
     }
 }
