@@ -18,16 +18,19 @@ public class ClienteRestController {
     private ClienteService clienteService;
 
     public ClienteRestController(ClienteService clienteService) {
+
         this.clienteService = clienteService;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Cliente> lista(){
+
         return clienteService.listarClientes();
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Cliente buscaPorId(@PathVariable(value = "id") Integer id){
+
         return this.clienteService.buscaPorId(id);
     }
 
