@@ -31,6 +31,14 @@ public class Cliente {
         this.atualizarDadosClienteNaMemoria(clienteEntrada);
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
     public String getCpf() {
 
         return cpf;
