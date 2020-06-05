@@ -19,10 +19,7 @@ public class ClienteEntradaDto {
         return cpf;
     }
 
-    public String getDescricao() {
 
-        return String.format("Nome: %s Cpf: %s",this.nome, this.cpf);
-    }
 }
 
 
