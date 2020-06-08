@@ -1,6 +1,7 @@
 package br.com.tt.petshop.api;
 
 import br.com.tt.petshop.dto.ClienteEntradaDto;
+import br.com.tt.petshop.dto.MensagemErroDto;
 import br.com.tt.petshop.exception.CpfInvalidoException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.service.ClienteService;
@@ -61,9 +62,10 @@ public class ClienteRestController {
     }
 
     @ExceptionHandler(CpfInvalidoException.class)
-    public ResponseEntity trataCpfInvalido(CpfInvalidoException exception){
-        return ResponseEntity
-                .badRequest()
-                .body("Cpf invalido!!");
+    public ResponseEntity<MensagemErroDto>
+            trataCpfInvalido(CpfInvalidoException excessao){
+
+        MensagemErroDto mensagemErro = new MensagemErroDto("cpf_invalido", excessao.getMessage());
+        return ResponseEntity.badRequest().body(mensagemErro);
     }
 }
