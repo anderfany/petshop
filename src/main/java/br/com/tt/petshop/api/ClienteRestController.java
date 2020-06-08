@@ -1,6 +1,7 @@
 package br.com.tt.petshop.api;
 
 import br.com.tt.petshop.dto.ClienteEntradaDto;
+import br.com.tt.petshop.exception.CpfInvalidoException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.service.ClienteService;
 import org.springframework.http.MediaType;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.print.attribute.standard.Media;
 import java.net.URI;
 import java.util.List;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/clientes")
@@ -26,6 +29,16 @@ public class ClienteRestController {
     public List<Cliente> lista(){
 
         return clienteService.listarClientes();
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity criar(@RequestBody ClienteEntradaDto clienteParaCriar){
+        Cliente clienteCriado = clienteService.criarCliente(clienteParaCriar);
+        String location = String.format("/clientes/%d", clienteCriado.getId());
+
+        return ResponseEntity
+                .created(URI.create(location)).
+                        build();
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -47,12 +60,10 @@ public class ClienteRestController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity criar(@RequestBody ClienteEntradaDto clienteParaCriar){
-        clienteService.criarCliente(clienteParaCriar);
-        URI location = URI.create("/clientes/");
+    @ExceptionHandler(CpfInvalidoException.class)
+    public ResponseEntity trataCpfInvalido(CpfInvalidoException exception){
         return ResponseEntity
-                .created(location).
-                build();
+                .badRequest()
+                .body("Cpf invalido!!");
     }
 }
