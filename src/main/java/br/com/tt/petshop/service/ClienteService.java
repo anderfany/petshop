@@ -1,6 +1,7 @@
 package br.com.tt.petshop.service;
 
 import br.com.tt.petshop.dto.ClienteEntradaDto;
+import br.com.tt.petshop.dto.ClienteSaidaDto;
 import br.com.tt.petshop.exception.CpfInvalidoException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.ClienteRepository;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Service
 public class ClienteService {
@@ -21,9 +24,12 @@ public class ClienteService {
         this.cpfValidator = cpfValidator;
     }
 
-    public List<Cliente> listarClientes(){
+    public List<ClienteSaidaDto> listarClientes(){
 
-        return this.clienteRepository.listarClientes();
+        return this.clienteRepository.listarClientes()
+                .stream()
+                .map(ClienteSaidaDto::converte)
+                .collect(Collectors.toList());
     }
 
     @Transactional//Deixa tudo abaixo de uma transação, ou seja, propricia ROLLBACK!

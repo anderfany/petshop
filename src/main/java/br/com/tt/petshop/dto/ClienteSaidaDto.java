@@ -13,15 +13,23 @@ public class ClienteSaidaDto {
         this.cpf = cliente.getCpf();
     }
 
+    public static ClienteSaidaDto converte(Cliente cliente){
+
+        return new ClienteSaidaDto(cliente);
+    }
+
     public Integer getId() {
+
         return id;
     }
 
     public String getNome() {
+
         return nome;
     }
 
     public String getCpf() {
+
         return cpf;
     }
 

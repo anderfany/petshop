@@ -1,6 +1,7 @@
 package br.com.tt.petshop.api;
 
 import br.com.tt.petshop.dto.ClienteEntradaDto;
+import br.com.tt.petshop.dto.ClienteSaidaDto;
 import br.com.tt.petshop.dto.MensagemErroDto;
 import br.com.tt.petshop.exception.CpfInvalidoException;
 import br.com.tt.petshop.model.Cliente;
@@ -27,7 +28,7 @@ public class ClienteRestController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Cliente> lista(){
+    public List<ClienteSaidaDto> lista(){
 
         return clienteService.listarClientes();
     }
