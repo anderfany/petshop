@@ -3,6 +3,7 @@ package br.com.tt.petshop.service;
 import br.com.tt.petshop.dto.ClienteEntradaDto;
 import br.com.tt.petshop.dto.ClienteSaidaDto;
 import br.com.tt.petshop.exception.CpfInvalidoException;
+import br.com.tt.petshop.exception.ErroDeNegocioException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.ClienteRepository;
 import br.com.tt.petshop.util.CpfValidator;
@@ -12,10 +13,12 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class ClienteService {
 
+    public static String SEPARADOR = " "; //Constante para usar no espaço em branco
     private ClienteRepository clienteRepository;
     private CpfValidator cpfValidator;
 
@@ -39,8 +42,29 @@ public class ClienteService {
         if( ! cpfValidator.verificaSeCpfValido(clienteParaCriar.getCpf())){
             throw new CpfInvalidoException("O formato do CPF está incorreto");
         }
+
+        //Cliente tem que ter no minimo duas partes
+        if(!verificaSeClientePossuiDuasPartes(clienteParaCriar.getNome())){
+            throw new ErroDeNegocioException("Cliente deve conter nome e sobrenome");
+        }
+
+        //Cada parte do cliente tem que ter no minimo duas letras
+        if(!verificaSePartesClientePossuiDuasLetras(clienteParaCriar.getNome())){
+            throw new ErroDeNegocioException("Cliente nao pode conter duas letras ou menos");
+        }
+
         Cliente clienteConvertidoDtoParaEntidade = new Cliente(clienteParaCriar);
         return clienteRepository.criarCliente(clienteConvertidoDtoParaEntidade);
+    }
+
+    //Cliente tem que ter no minimo duas partes
+    private boolean verificaSeClientePossuiDuasPartes(String nome) {
+        return nome.split(SEPARADOR).length > 2;
+    }
+
+    //Cada parte do cliente tem que ter no minimo duas letras
+    private boolean verificaSePartesClientePossuiDuasLetras(String nome) {
+        return Stream.of(nome.split(SEPARADOR)).allMatch(parte -> parte.length() > 2);
     }
 
     public Cliente buscaPorId(Integer id){
