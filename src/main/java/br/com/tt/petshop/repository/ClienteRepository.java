@@ -19,7 +19,7 @@ public class ClienteRepository {
     public List<Cliente> listarClientes(){
         // HQL - Hibernate Query Language - Linguagem de consulta do Hibernate
         // JPQL - JPA Query Language
-        String minhaQueryJpql = "select c.nome from Cliente c";
+        String minhaQueryJpql = "select c from Cliente c";
         return em.createQuery(minhaQueryJpql).getResultList();
     }
 
