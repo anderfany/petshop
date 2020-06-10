@@ -4,6 +4,7 @@ import br.com.tt.petshop.dto.ClienteEntradaDto;
 import br.com.tt.petshop.dto.ClienteSaidaDto;
 import br.com.tt.petshop.dto.MensagemErroDto;
 import br.com.tt.petshop.exception.CpfInvalidoException;
+import br.com.tt.petshop.exception.ErroDeNegocioException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.service.ClienteService;
 import org.springframework.http.MediaType;
@@ -67,6 +68,14 @@ public class ClienteRestController {
             trataCpfInvalido(CpfInvalidoException excessao){
 
         MensagemErroDto mensagemErro = new MensagemErroDto("cpf_invalido", excessao.getMessage());
+        return ResponseEntity.badRequest().body(mensagemErro);
+    }
+
+    @ExceptionHandler(ErroDeNegocioException.class)
+    public ResponseEntity<ErroDeNegocioException>
+    tratarErroNegocio(ErroDeNegocioException excessao){
+
+        ErroDeNegocioException mensagemErro = new ErroDeNegocioException("nome_invalido", excessao.getMessage());
         return ResponseEntity.badRequest().body(mensagemErro);
     }
 }

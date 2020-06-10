@@ -45,12 +45,12 @@ public class ClienteService {
 
         //Cliente tem que ter no minimo duas partes
         if(!verificaSeClientePossuiDuasPartes(clienteParaCriar.getNome())){
-            throw new ErroDeNegocioException("Cliente deve conter nome e sobrenome");
+            throw new ErroDeNegocioException("nome_invalido", "Cliente deve conter nome e sobrenome");
         }
 
         //Cada parte do cliente tem que ter no minimo duas letras
         if(!verificaSePartesClientePossuiDuasLetras(clienteParaCriar.getNome())){
-            throw new ErroDeNegocioException("Cliente nao pode conter duas letras ou menos");
+            throw new ErroDeNegocioException("nome_invalido", "Cliente nao pode conter duas letras ou menos");
         }
 
         Cliente clienteConvertidoDtoParaEntidade = new Cliente(clienteParaCriar);
