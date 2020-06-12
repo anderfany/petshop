@@ -14,4 +14,6 @@ public interface AnimalRepository extends
 {
     List<Animal> findAll();
 
+    Animal findAllById(Long id);
+
 }

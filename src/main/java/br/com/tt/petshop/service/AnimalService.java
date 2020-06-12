@@ -20,4 +20,9 @@ public class AnimalService {
     public List<Animal> listarAnimais() {
         return animalRepository.findAll();
     }
+
+    public Animal buscarPorId(Long id) {
+        return animalRepository.findAllById(id);
+    }
+
 }

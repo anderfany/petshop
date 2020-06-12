@@ -13,7 +13,7 @@ public class Animal {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "Id")
+    @Column(name = "ID")
     private Long id;
 
     @Column(name = "NOME")
@@ -26,7 +26,12 @@ public class Animal {
     @Enumerated(EnumType.STRING)
     private TipoAnimal tipo;
 
-    @JoinColumn(name = "ID_CLIENTE")
-    @ManyToOne
-    private Cliente Cliente;
+    //@JoinColumn(name = "ID_CLIENTE")
+    //@ManyToOne
+    //private Cliente Cliente;
+
+    //Construtor default Hibernate
+    Animal(){
+    }
+
 }
