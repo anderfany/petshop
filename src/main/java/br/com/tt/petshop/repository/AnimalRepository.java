@@ -1,10 +1,12 @@
 package br.com.tt.petshop.repository;
 
 import br.com.tt.petshop.model.Animal;
+import br.com.tt.petshop.model.Cliente;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface AnimalRepository extends
@@ -14,6 +16,8 @@ public interface AnimalRepository extends
 {
     List<Animal> findAll();
 
-    Animal findAllById(Long id);
+    Optional<Animal> findById(Long id);
+
+    //Optional<Animal> findByNomeAndCliente(String nome, Cliente cliente);
 
 }

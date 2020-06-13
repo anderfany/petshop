@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/animais")
@@ -29,7 +30,8 @@ public class AnimalRestController {
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Animal buscarPorId(@PathVariable("id") Long id) {
+    public Optional<Animal> buscarPorId(@PathVariable("id") Long id) {
         return animalService.buscarPorId(id);
     }
+
 }
