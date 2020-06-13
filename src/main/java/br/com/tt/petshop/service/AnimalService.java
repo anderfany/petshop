@@ -1,5 +1,6 @@
 package br.com.tt.petshop.service;
 
+import br.com.tt.petshop.dto.AnimalSaidaDto;
 import br.com.tt.petshop.model.Animal;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.AnimalRepository;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AnimalService {
@@ -21,8 +23,12 @@ public class AnimalService {
         this.animalRepository = animalRepository;
     }
 
-    public List<Animal> listarAnimais() {
-        return animalRepository.findAll();
+    public List<AnimalSaidaDto> listarAnimais()
+    {
+        return animalRepository.findAll()
+                .stream()
+                .map(AnimalSaidaDto::converte)
+                .collect(Collectors.toList());
     }
 
     public Optional<Animal> buscarPorId(Long id)

@@ -1,5 +1,6 @@
 package br.com.tt.petshop.api;
 
+import br.com.tt.petshop.dto.AnimalSaidaDto;
 import br.com.tt.petshop.model.Animal;
 import br.com.tt.petshop.service.AnimalService;
 import org.springframework.http.MediaType;
@@ -25,7 +26,7 @@ public class AnimalRestController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Animal> lista() {
+    public List<AnimalSaidaDto> lista() {
         return animalService.listarAnimais();
     }
 
