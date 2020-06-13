@@ -20,3 +20,9 @@ insert into CLIENTE (nro_cpf, txt_nome) values ('881.990.690-23', 'Nadia Jaqueli
 insert into CLIENTE (nro_cpf, txt_nome) values ('173.779.530-20', 'Odolir Pietro');
 insert into CLIENTE (nro_cpf, txt_nome) values ('640.109.110-00', 'José Avelino');
 insert into CLIENTE (nro_cpf, txt_nome) values ('497.865.660-50', 'Amadeu Rosalino');
+
+
+insert into TB_ANIMAL (nome, data_nascimento, tipo) values ('Zaira', TO_DATE( '21-01-2012', 'DD-MM-YYYY' ), 'MAMIFERO');
+insert into TB_ANIMAL (nome, data_nascimento, tipo) values ('Zola', TO_DATE( '10-03-2014', 'DD-MM-YYYY' ), 'AVE');
+insert into TB_ANIMAL (nome, data_nascimento, tipo) values ('Urso', TO_DATE( '30-07-2015', 'DD-MM-YYYY' ), 'MAMIFERO');
+insert into TB_ANIMAL (nome, data_nascimento, tipo) values ('Mel', TO_DATE( '12-09-2017', 'DD-MM-YYYY' ), 'MAMIFERO');
