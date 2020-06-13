@@ -22,16 +22,24 @@ public class Animal {
     @Column(name = "DATA_NASCIMENTO")
     private LocalDate dataNascimento;
 
-    @Column(name = "TIPO_ANIMAL")
+    @Column(name = "TIPO")
     @Enumerated(EnumType.STRING)
     private TipoAnimal tipo;
 
-    //@JoinColumn(name = "ID_CLIENTE")
-    //@ManyToOne
-    //private Cliente Cliente;
+    @JoinColumn(name = "ID_CLIENTE")
+    @ManyToOne
+    private Cliente Cliente;
 
     //Construtor default Hibernate
     Animal(){
     }
 
+    //Getters
+    public Long getId() { return id; }
+
+    public String getNome() { return nome; }
+
+    public LocalDate getDataNascimento() { return dataNascimento; }
+
+    public TipoAnimal getTipo() { return tipo; }
 }
