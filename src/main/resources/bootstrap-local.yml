@@ -1,0 +1,28 @@
+spring:
+#H2 para desenvolvimento local
+  h2.console.enabled: true
+  datasource:
+    url: jdbc:h2:mem:petshop
+    #url: jdbc:h2:~/petshop.db #local
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      # create-drop - criar tudo do zero
+      # update - atualiza as diferenças
+      # none - nada
+      # validate - não altera estrutura, mas falha
+      ddl-auto: update
+      format_sql: true
+    show-sql: true
+    hikari:
+      connectionTimeout: 5000
+      idleTimeout: 1000
+      maxLifetime: 30000
+      maximumPoolSize: 1
+server:
+  port: 8080
+
+#LOGS
+logger.level.com.zaxxer.hikari: debug
