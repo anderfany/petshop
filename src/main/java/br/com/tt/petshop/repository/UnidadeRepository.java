@@ -27,7 +27,7 @@ public class UnidadeRepository {
 
         //Forma com DTO
         return jdbcTemplate
-                .query("select id,nome,endereco from unidade",
+                .query("select id,nome,endereco from TB_UNIDADE",
                         (rs, rowNum) -> new UnidadeDto(
                                 rs.getInt("id"),
                                 rs.getString("nome"),
@@ -39,7 +39,7 @@ public class UnidadeRepository {
         String nome = unidadeDto.getNome();
         String endereco = unidadeDto.getEndereco();
         jdbcTemplate.update(
-                "insert into UNIDADE (nome, endereco) values (?, ?)",
+                "insert into TB_UNIDADE (nome, endereco) values (?, ?)",
                 nome, endereco
         );
 
@@ -48,7 +48,7 @@ public class UnidadeRepository {
     public UnidadeDto buscarPorId(Long idUnidade) {
         return jdbcTemplate
                 //.queryForList("select nome from unidade", String.class);
-                .queryForObject("select id,nome,endereco from unidade where id = ?",
+                .queryForObject("select id,nome,endereco from TB_UNIDADE where id = ?",
                         new Object[]{idUnidade},
                         (rs, rowNum) -> new UnidadeDto(
                                 rs.getInt("id"),
@@ -57,12 +57,12 @@ public class UnidadeRepository {
     }
 
     public void salvar(UnidadeDto unidade) {
-        jdbcTemplate.update("update UNIDADE set nome = ?, endereco = ? where id = ?",
+        jdbcTemplate.update("update TB_UNIDADE set nome = ?, endereco = ? where id = ?",
                 unidade.getNome(), unidade.getEndereco(), unidade.getId());
     }
 
     public void remover(Long id){
-        jdbcTemplate.update("delete from UNIDADE where id = ?", id);
+        jdbcTemplate.update("delete from TB_UNIDADE where id = ?", id);
     }
 
 

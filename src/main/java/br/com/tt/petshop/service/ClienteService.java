@@ -67,16 +67,15 @@ public class ClienteService {
         return Stream.of(nome.split(SEPARADOR)).allMatch(parte -> parte.length() > 2);
     }
 
-    public Cliente buscaPorId(Integer id){
-
+    public Cliente buscaPorId(Integer id) {
         return this.clienteRepository.buscarPorId(id);
     }
 
     @Transactional
-    public void atualizar(Integer id, ClienteEntradaDto clienteParaAtualizar) {
-        Cliente clienteSalvoNoBanco = this.buscaPorId(id);
+    public Cliente atualizar(Integer id, ClienteEntradaDto clienteParaAtualizar) {
+        Cliente clienteSalvoNoBanco = clienteRepository.buscarPorId(id);
         clienteSalvoNoBanco.atualizarDadosClienteNaMemoria(clienteParaAtualizar);
-        clienteRepository.salvar(clienteSalvoNoBanco);
+        return clienteRepository.atualizar(clienteSalvoNoBanco);
     }
 
     @Transactional
@@ -88,8 +87,5 @@ public class ClienteService {
     }
 
     @Transactional
-    public void removerPorId(Integer id) {
-
-        clienteRepository.removerPorId(id);
-    }
+    public void removerPorId(Integer id) { clienteRepository.removerPorId(id); }
 }

@@ -3,38 +3,33 @@ package br.com.tt.petshop.dto;
 import br.com.tt.petshop.model.Cliente;
 
 public class ClienteSaidaDto {
+
+    //Atributos
     private Integer id;
     private String nome;
     private String cpf;
 
+    //Construtor
     public ClienteSaidaDto(Cliente cliente){
         this.id = cliente.getId();
         this.nome = cliente.getNome();
         this.cpf = cliente.getCpf();
     }
 
+    //Conversor Repository -> Service - Mudar para Mapper???
     public static ClienteSaidaDto converte(Cliente cliente){
-
         return new ClienteSaidaDto(cliente);
     }
 
-    public Integer getId() {
+    //Getters
+    public Integer getId() { return id; }
 
-        return id;
-    }
+    public String getNome() { return nome; }
 
-    public String getNome() {
+    public String getCpf() { return cpf; }
 
-        return nome;
-    }
-
-    public String getCpf() {
-
-        return cpf;
-    }
-
+    //Descricao personalizada
     public String getDescricao() {
-
         return String.format("Nome: %s e Cpf: %s", this.nome, this.cpf);
     }
 

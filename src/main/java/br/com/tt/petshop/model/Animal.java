@@ -9,7 +9,12 @@ import java.time.LocalDate;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
+@Table(name = "TB_ANIMAL")
 public class Animal {
+
+    //Construtor para o Hibernate
+    Animal(){
+    }
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -28,11 +33,7 @@ public class Animal {
 
     @JoinColumn(name = "ID_CLIENTE")
     @ManyToOne
-    private Cliente Cliente;
-
-    //Construtor default Hibernate
-    Animal(){
-    }
+    private Cliente cliente;
 
     //Getters
     public Long getId() { return id; }

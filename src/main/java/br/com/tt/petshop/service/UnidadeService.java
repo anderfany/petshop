@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 public class UnidadeService {
 
+    //Atributo
     private UnidadeRepository unidadeRepository;
 
     //Construtor
@@ -21,18 +22,15 @@ public class UnidadeService {
 
     //Metodo
     public List<UnidadeDto> listarUnidades() {
-
         return unidadeRepository.listarUnidades();
     }
 
     //Metodo - como nao retorna nada, diz-se que ele retorna void
     public void criarUnidade(UnidadeEntradaDto unidadeDto) {
-
         unidadeRepository.criarUnidade(unidadeDto);
     }
 
     public UnidadeDto buscarPorId(Long idUnidade) {
-
         return unidadeRepository.buscarPorId(idUnidade);
     }
 
@@ -41,8 +39,8 @@ public class UnidadeService {
         unidadeSalvaNoBano.atualizarDadosUnidadeNaMemoria(unidadeParaAtualizar);
         unidadeRepository.salvar(unidadeSalvaNoBano);
     }
-    public void remover(Long id){
 
+    public void remover(Long id){
         unidadeRepository.remover(id);
     }
 }
