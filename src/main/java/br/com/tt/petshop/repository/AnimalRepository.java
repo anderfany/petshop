@@ -30,7 +30,10 @@ public interface AnimalRepository extends
     @Query("select a from Animal a where a.dataNascimento = :dataNascimento")
     List<Animal> buscarPorDataDeNascimento(@Param("dataNascimento") LocalDate dataNascimento);
 
+    @Query("select a from Animal a join a.cliente c where c.cpf = :cpf ")
+    List<Animal> buscaAnimaisDoClientePorCpf(@Param("cpf") String cpf);
+
     //Query Nativa
-    @Query(value = "select A.NOME FROM TB_ANIMAL A order limit 1 by A.ID desc")
-    String buscarUltimoNomeAnimalCadastrado(String nome);
+    @Query(value = "select A.NOME FROM TB_ANIMAL A order limit 1 by A.ID desc", nativeQuery = true)
+    String buscarUltimoNomeAnimalCadastrado();
 }
