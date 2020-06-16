@@ -1,5 +1,7 @@
 package br.com.tt.petshop.model;
 
+import br.com.tt.petshop.dto.AnimalEntradaDto;
+import br.com.tt.petshop.dto.ClienteEntradaDto;
 import br.com.tt.petshop.enumaration.TipoAnimal;
 
 import javax.persistence.*;
@@ -43,4 +45,12 @@ public class Animal {
     public LocalDate getDataNascimento() { return dataNascimento; }
 
     public TipoAnimal getTipo() { return tipo; }
+
+    //Poderia ir para uma classe Mapper???
+    public Animal(AnimalEntradaDto animalEntradaDto, Cliente cliente) {
+        this.nome = animalEntradaDto.getNome();
+        this.dataNascimento = animalEntradaDto.getDataNascimento();
+        this.tipo = animalEntradaDto.getTipo();
+        this.cliente = cliente;
+    }
 }

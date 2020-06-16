@@ -16,7 +16,7 @@ insert into TB_CLIENTE (nro_cpf, txt_nome) values ('640.109.110-00', 'José Avel
 insert into TB_CLIENTE (nro_cpf, txt_nome) values ('497.865.660-50', 'Amadeu Rosalino');
 
 
-insert into TB_ANIMAL (nome, data_nascimento, tipo) values ('Zaira', TO_DATE( '21-01-2012', 'DD-MM-YYYY' ), 'REPTIL');
-insert into TB_ANIMAL (nome, data_nascimento, tipo) values ('Zola', TO_DATE( '10-03-2014', 'DD-MM-YYYY' ), 'AVE');
-insert into TB_ANIMAL (nome, data_nascimento, tipo) values ('Urso', TO_DATE( '07-12-2013', 'DD-MM-YYYY' ), 'MAMIFERO');
-insert into TB_ANIMAL (nome, data_nascimento, tipo) values ('Lana', TO_DATE( '02-07-2010', 'DD-MM-YYYY' ), 'MAMIFERO');
+--insert into TB_ANIMAL (nome, data_nascimento, tipo) values ('Zaira', TO_DATE( '21-01-2012', 'DD-MM-YYYY' ), 'REPTIL');
+--insert into TB_ANIMAL (nome, data_nascimento, tipo) values ('Zola', TO_DATE( '10-03-2014', 'DD-MM-YYYY' ), 'AVE');
+--insert into TB_ANIMAL (nome, data_nascimento, tipo) values ('Urso', TO_DATE( '07-12-2013', 'DD-MM-YYYY' ), 'MAMIFERO');
+--insert into TB_ANIMAL (nome, data_nascimento, tipo) values ('Lana', TO_DATE( '02-07-2010', 'DD-MM-YYYY' ), 'MAMIFERO');

@@ -30,6 +30,9 @@ public interface AnimalRepository extends
     @Query("select a from Animal a where a.dataNascimento = :dataNascimento")
     List<Animal> buscarPorDataDeNascimento(@Param("dataNascimento") LocalDate dataNascimento);
 
+    @Query("select a from Animal a join a.cliente c where c.id = :idCliente")
+    List<Animal> buscaAnimaisDoCliente(@Param("idCliente") Integer idCliente);
+
     @Query("select a from Animal a join a.cliente c where c.cpf = :cpf ")
     List<Animal> buscaAnimaisDoClientePorCpf(@Param("cpf") String cpf);
 

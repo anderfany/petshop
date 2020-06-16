@@ -9,15 +9,9 @@ public class ClienteEntradaDto {
         this.cpf = cpf;
     }
 
-    public String getNome() {
+    public String getNome() { return nome; }
 
-        return nome;
-    }
-
-    public String getCpf() {
-
-        return cpf;
-    }
+    public String getCpf() { return cpf; }
 
 
 }
