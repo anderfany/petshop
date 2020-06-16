@@ -2,6 +2,7 @@ package br.com.tt.petshop.service;
 
 import br.com.tt.petshop.dto.AnimalEntradaDto;
 import br.com.tt.petshop.dto.AnimalSaidaDto;
+import br.com.tt.petshop.exception.ErroDeNegocioException;
 import br.com.tt.petshop.model.Animal;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.AnimalRepository;
@@ -36,9 +37,12 @@ public class AnimalService {
                 .collect(Collectors.toList());
     }
 
-    public Optional<Animal> buscarPorId(Long id)
+    public AnimalSaidaDto buscaAnimalPorId(Integer idCliente, Long idAnimal)
     {
-        return animalRepository.findById(id);
+        Animal animalDoCliente = animalRepository
+                .buscaAnimalDoClientePorId(idCliente, idAnimal)
+                .orElseThrow(() -> new ErroDeNegocioException("animal_nao_existe", "Não existe animal para esse cliente."));
+        return AnimalSaidaDto.converte(animalDoCliente);
     }
 
     public Animal criarAnimal(AnimalEntradaDto animalEntradaDto, Integer idCliente)

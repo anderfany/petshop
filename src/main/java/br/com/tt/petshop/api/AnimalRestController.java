@@ -30,9 +30,10 @@ public class AnimalRestController {
         return animalService.listarAnimais(idCliente);
     }
 
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Animal> buscarPorId(@PathVariable("id") Long id) {
-        return animalService.buscarPorId(id);
+    @GetMapping(value = "/{idAnimal}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public AnimalSaidaDto buscarPorId(@PathVariable("idCliente") Integer idCliente,
+                                        @PathVariable("idAnimal") Long idAnimal) {
+        return animalService.buscaAnimalPorId(idCliente, idAnimal);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

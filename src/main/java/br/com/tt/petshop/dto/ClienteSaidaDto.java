@@ -10,7 +10,7 @@ public class ClienteSaidaDto {
     private String cpf;
 
     //Construtor
-    public ClienteSaidaDto(Cliente cliente){
+    private ClienteSaidaDto(Cliente cliente){
         this.id = cliente.getId();
         this.nome = cliente.getNome();
         this.cpf = cliente.getCpf();
