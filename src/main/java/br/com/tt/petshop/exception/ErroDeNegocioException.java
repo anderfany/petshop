@@ -9,4 +9,7 @@ public class ErroDeNegocioException extends RuntimeException{
         this.codigo = codigo;
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
 }
