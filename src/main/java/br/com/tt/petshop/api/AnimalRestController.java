@@ -9,9 +9,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/clientes/{idCliente}/animais")
@@ -40,7 +40,7 @@ public class AnimalRestController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity criar(@PathVariable("idCliente") Integer idCliente,
-                                @RequestBody AnimalEntradaDto animalEntradaDto) {
+                                @RequestBody @Valid AnimalEntradaDto animalEntradaDto) {
         Animal animalPersistido = animalService.criarAnimal(animalEntradaDto, idCliente);
 
         String location = String.format("/clientes/%d/animais/%d", idCliente, animalPersistido.getId());
