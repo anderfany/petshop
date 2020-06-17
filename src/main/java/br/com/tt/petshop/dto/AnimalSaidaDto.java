@@ -14,8 +14,7 @@ public class AnimalSaidaDto {
     private TipoAnimal tipo;
 
     //Construtor
-    private AnimalSaidaDto(Animal animal)
-    {
+    private AnimalSaidaDto(Animal animal) {
         this.id = animal.getId();
         this.nome = animal.getNome();
         this.dataNascimento = animal.getDataNascimento();

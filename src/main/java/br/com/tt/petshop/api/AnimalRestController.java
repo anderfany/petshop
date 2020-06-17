@@ -40,7 +40,7 @@ public class AnimalRestController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity criar(@PathVariable("idCliente") Integer idCliente,
-                                @RequestBody AnimalEntradaDto animalEntradaDto){
+                                @RequestBody AnimalEntradaDto animalEntradaDto) {
         Animal animalPersistido = animalService.criarAnimal(animalEntradaDto, idCliente);
 
         String location = String.format("/clientes/%d/animais/%d", idCliente, animalPersistido.getId());

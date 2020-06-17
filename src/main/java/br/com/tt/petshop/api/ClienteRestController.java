@@ -35,7 +35,7 @@ public class ClienteRestController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity criar(@RequestBody ClienteEntradaDto clienteParaCriar){
+    public ResponseEntity criar(@RequestBody ClienteEntradaDto clienteParaCriar) {
         Cliente clienteCriado = clienteService.criarCliente(clienteParaCriar);
         String location = String.format("/clientes/%d", clienteCriado.getId());
 
@@ -45,27 +45,27 @@ public class ClienteRestController {
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Cliente buscaPorId(@PathVariable(value = "id") Integer id){
+    public Cliente buscaPorId(@PathVariable(value = "id") Integer id) {
 
         return this.clienteService.buscaPorId(id);
     }
 
     @PutMapping(value = "/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Integer id,
-                                    @RequestBody ClienteEntradaDto clienteParaAtualizar){
+                                    @RequestBody ClienteEntradaDto clienteParaAtualizar) {
         clienteService.atualizar(id, clienteParaAtualizar);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity remover(@PathVariable("id") Integer id){
+    public ResponseEntity remover(@PathVariable("id") Integer id) {
         clienteService.remover(id);
         return ResponseEntity.noContent().build();
     }
 
     @ExceptionHandler(CpfInvalidoException.class)
     public ResponseEntity<MensagemErroDto>
-            trataCpfInvalido(CpfInvalidoException excessao){
+            trataCpfInvalido(CpfInvalidoException excessao) {
 
         MensagemErroDto mensagemErro = new MensagemErroDto("cpf_invalido", excessao.getMessage());
         return ResponseEntity.badRequest().body(mensagemErro);
@@ -73,7 +73,7 @@ public class ClienteRestController {
 
     @ExceptionHandler(ErroDeNegocioException.class)
     public ResponseEntity<ErroDeNegocioException>
-    tratarErroNegocio(ErroDeNegocioException excessao){
+    tratarErroNegocio(ErroDeNegocioException excessao) {
 
         ErroDeNegocioException mensagemErro = new ErroDeNegocioException("nome_invalido", excessao.getMessage());
         return ResponseEntity.badRequest().body(mensagemErro);

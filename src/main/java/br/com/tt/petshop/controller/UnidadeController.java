@@ -16,13 +16,13 @@ public class UnidadeController {
 
     private UnidadeService unidadeService;
 
-    public UnidadeController(UnidadeService unidadeService){
+    public UnidadeController(UnidadeService unidadeService) {
 
         this.unidadeService = unidadeService;
     }
 
     @RequestMapping("/admin/unidade/lista")
-    public String getUnidadeLista(Model model){
+    public String getUnidadeLista(Model model) {
 
         List<UnidadeDto> unidades = unidadeService.listarUnidades();
         model.addAttribute("unidades", unidades);
@@ -38,7 +38,7 @@ public class UnidadeController {
 
     @RequestMapping("/admin/unidade/acaoCadastrar")
     public ModelAndView acaoCadastrar(@RequestParam("nome")     String nome,
-                                      @RequestParam("endereco") String endereco){
+                                      @RequestParam("endereco") String endereco) {
 
         UnidadeEntradaDto unidadeDto = new UnidadeEntradaDto(nome, endereco);
         unidadeService.criarUnidade(unidadeDto);

@@ -33,19 +33,19 @@ public class UnidadeRestController {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long idUnidade,
-                                    @RequestBody UnidadeDto unidadeParaAtualizar){
+                                    @RequestBody UnidadeDto unidadeParaAtualizar) {
         unidadeService.atualizar(idUnidade, unidadeParaAtualizar);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity remover(@PathVariable("id") Long id){
+    public ResponseEntity remover(@PathVariable("id") Long id) {
         unidadeService.remover(id);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity criar(@RequestBody UnidadeEntradaDto unidadeParaCriar){
+    public ResponseEntity criar(@RequestBody UnidadeEntradaDto unidadeParaCriar) {
         unidadeService.criarUnidade(unidadeParaCriar);
         URI location = URI.create("/unidades/");
         return ResponseEntity.created(location).build();

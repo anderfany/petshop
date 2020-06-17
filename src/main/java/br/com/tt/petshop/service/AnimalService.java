@@ -22,14 +22,12 @@ public class AnimalService {
     private final ClienteService clienteService;
 
     //Construtor
-    public AnimalService(AnimalRepository animalRepository, ClienteService clienteService)
-    {
+    public AnimalService(AnimalRepository animalRepository, ClienteService clienteService) {
         this.animalRepository = animalRepository;
         this.clienteService = clienteService;
     }
 
-    public List<AnimalSaidaDto> listarAnimais(Integer idCliente, TipoAnimal tipo)
-    {
+    public List<AnimalSaidaDto> listarAnimais(Integer idCliente, TipoAnimal tipo) {
         //Cria variavel para poder usar fora do if
         List<Animal> animalDoCliente;
         //Testa se tipo é null para saber qual busca usar
@@ -43,31 +41,28 @@ public class AnimalService {
                 .map(AnimalSaidaDto::build)
                 .collect(Collectors.toList());
         //Se retorno do banco for vazio mensagem de erro
-        if(listaAnimalDoCliente.isEmpty()){
+        if(listaAnimalDoCliente.isEmpty()) {
             throw new ErroDeNegocioException("animal_nao_existe",
                                              "Não existem animais para esse cliente.");
         }
         return listaAnimalDoCliente;
     }
 
-    public AnimalSaidaDto buscaAnimalPorId(Integer idCliente, Long idAnimal)
-    {
+    public AnimalSaidaDto buscaAnimalPorId(Integer idCliente, Long idAnimal) {
         Animal animalDoCliente = animalRepository
                 .buscaAnimalDoClientePorId(idCliente, idAnimal)
                 .orElseThrow(() -> new ErroDeNegocioException("animal_nao_existe",
                                                               "Não existe animal com este ID para esse cliente."));
-        return AnimalSaidaDto.converte(animalDoCliente);
+        return AnimalSaidaDto.build(animalDoCliente);
     }
 
-    public Animal criarAnimal(AnimalEntradaDto animalEntradaDto, Integer idCliente)
-    {
+    public Animal criarAnimal(AnimalEntradaDto animalEntradaDto, Integer idCliente) {
         Cliente clienteDonoAnimal = clienteService.buscaPorId(idCliente);
         Animal animalNovo = new Animal(animalEntradaDto, clienteDonoAnimal);
         return animalRepository.save(animalNovo);
     }
 
-    public void removerAnimal(Long id)
-    {
+    public void removerAnimal(Long id) {
         animalRepository.findById(id)
                 .ifPresentOrElse( animal -> animalRepository.delete(animal),
                         () -> {throw new RuntimeException("Animal não existe");});

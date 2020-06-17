@@ -23,7 +23,7 @@ public class ClienteController {
     }
 
     @RequestMapping("lista")
-    public String listarClientes(Model model){
+    public String listarClientes(Model model) {
 
         List<ClienteSaidaDto> clientes = clienteService.listarClientes();
         model.addAttribute("clientes", clientes);
@@ -37,9 +37,8 @@ public class ClienteController {
     }
 
     @RequestMapping("acaoCadastrar")
-    public ModelAndView acaoCadastrar(
-                                      @RequestParam("nome") String nome,
-                                      @RequestParam("cpf") String cpf){
+    public ModelAndView acaoCadastrar(@RequestParam("nome") String nome,
+                                      @RequestParam("cpf") String cpf) {
         ClienteEntradaDto clienteEntrada = new ClienteEntradaDto(nome, cpf);
         clienteService.criarCliente(clienteEntrada);
 

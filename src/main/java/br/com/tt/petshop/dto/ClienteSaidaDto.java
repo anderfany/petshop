@@ -33,5 +33,4 @@ public class ClienteSaidaDto {
         return String.format("Nome: %s e Cpf: %s", this.nome, this.cpf);
     }
 
-
 }
