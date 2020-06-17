@@ -2,15 +2,14 @@ package br.com.tt.petshop.service;
 
 import br.com.tt.petshop.dto.AnimalEntradaDto;
 import br.com.tt.petshop.dto.AnimalSaidaDto;
+import br.com.tt.petshop.enumaration.TipoAnimal;
 import br.com.tt.petshop.exception.ErroDeNegocioException;
 import br.com.tt.petshop.model.Animal;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.AnimalRepository;
-import br.com.tt.petshop.repository.ClienteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,19 +28,41 @@ public class AnimalService {
         this.clienteService = clienteService;
     }
 
-    public List<AnimalSaidaDto> listarAnimais(Integer idCliente)
+    public List<AnimalSaidaDto> listarAnimais(Integer idCliente, TipoAnimal tipo)
     {
-        return animalRepository.buscaAnimaisDoCliente(idCliente)
-                .stream()
-                .map(AnimalSaidaDto::converte)
-                .collect(Collectors.toList());
+        if(tipo == null){
+            List<AnimalSaidaDto> animalDoCliente = animalRepository
+                    .buscaAnimaisDoCliente(idCliente)
+                    .stream()
+                    .map(AnimalSaidaDto::converte)
+                    .collect(Collectors.toList());
+            if(animalDoCliente.isEmpty()){
+                throw new ErroDeNegocioException("animal_nao_existe",
+                                                 "Não existem animais para esse cliente.");
+            } else {
+                return animalDoCliente;
+            }
+        } else {
+            List<AnimalSaidaDto> animalDoCliente = animalRepository
+                    .buscaAnimaisDoClientePorTipo(idCliente, tipo)
+                    .stream()
+                    .map(AnimalSaidaDto::converte)
+                    .collect(Collectors.toList());
+            if(animalDoCliente.isEmpty()){
+                throw new ErroDeNegocioException("animal_nao_existe",
+                                                 "Não existem animais deste tipo para esse cliente.");
+            } else {
+                return animalDoCliente;
+            }
+        }
     }
 
     public AnimalSaidaDto buscaAnimalPorId(Integer idCliente, Long idAnimal)
     {
         Animal animalDoCliente = animalRepository
                 .buscaAnimalDoClientePorId(idCliente, idAnimal)
-                .orElseThrow(() -> new ErroDeNegocioException("animal_nao_existe", "Não existe animal para esse cliente."));
+                .orElseThrow(() -> new ErroDeNegocioException("animal_nao_existe",
+                                                              "Não existe animal com este ID para esse cliente."));
         return AnimalSaidaDto.converte(animalDoCliente);
     }
 

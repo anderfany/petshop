@@ -2,6 +2,7 @@ package br.com.tt.petshop.api;
 
 import br.com.tt.petshop.dto.AnimalEntradaDto;
 import br.com.tt.petshop.dto.AnimalSaidaDto;
+import br.com.tt.petshop.enumaration.TipoAnimal;
 import br.com.tt.petshop.model.Animal;
 import br.com.tt.petshop.service.AnimalService;
 import org.springframework.http.MediaType;
@@ -26,13 +27,14 @@ public class AnimalRestController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<AnimalSaidaDto> listar(@PathVariable("idCliente") Integer idCliente) {
-        return animalService.listarAnimais(idCliente);
+    public List<AnimalSaidaDto> listarPorTipo(@PathVariable("idCliente") Integer idCliente,
+                                @RequestParam(required = false, name = "tipo") TipoAnimal tipo) {
+        return animalService.listarAnimais(idCliente, tipo);
     }
 
     @GetMapping(value = "/{idAnimal}", produces = MediaType.APPLICATION_JSON_VALUE)
     public AnimalSaidaDto buscarPorId(@PathVariable("idCliente") Integer idCliente,
-                                        @PathVariable("idAnimal") Long idAnimal) {
+                                      @PathVariable("idAnimal") Long idAnimal) {
         return animalService.buscaAnimalPorId(idCliente, idAnimal);
     }
 
