@@ -30,22 +30,24 @@ public class AnimalService {
 
     public List<AnimalSaidaDto> listarAnimais(Integer idCliente, TipoAnimal tipo)
     {
+        //Cria variavel para poder usar fora do if
         List<Animal> animalDoCliente = null;
+        //Testa se tipo é null para saber qual busca usar
         if(tipo == null) {
             animalDoCliente = animalRepository.buscaAnimaisDoCliente(idCliente);
         } else {
             animalDoCliente = animalRepository.buscaAnimaisDoClientePorTipo(idCliente, tipo);
         }
-        List<AnimalSaidaDto> listaAnimalDoCliente = animalDoCliente
-                .stream()
+        //Converte Animal para AnimalSaidaDto
+        List<AnimalSaidaDto> listaAnimalDoCliente = animalDoCliente.stream()
                 .map(AnimalSaidaDto::converte)
                 .collect(Collectors.toList());
+        //Se retorno do banco for vazio mensagem de erro
         if(listaAnimalDoCliente.isEmpty()){
             throw new ErroDeNegocioException("animal_nao_existe",
                                              "Não existem animais para esse cliente.");
-        } else {
-            return listaAnimalDoCliente;
         }
+        return listaAnimalDoCliente;
     }
 
     public AnimalSaidaDto buscaAnimalPorId(Integer idCliente, Long idAnimal)
