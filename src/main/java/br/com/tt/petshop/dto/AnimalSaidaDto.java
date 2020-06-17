@@ -23,12 +23,12 @@ public class AnimalSaidaDto {
     }
 
     //Conversao para do Repository -> Service
-    public static AnimalSaidaDto converte(Animal animal){
+    public static AnimalSaidaDto build(Animal animal){
         return new AnimalSaidaDto(animal);
     }
 
     //Getters
-    public Long getId() { return id; }
+    //public Long getId() { return id; }
 
     public String getNome() {
         return nome;

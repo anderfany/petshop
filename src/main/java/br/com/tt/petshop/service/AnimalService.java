@@ -31,7 +31,7 @@ public class AnimalService {
     public List<AnimalSaidaDto> listarAnimais(Integer idCliente, TipoAnimal tipo)
     {
         //Cria variavel para poder usar fora do if
-        List<Animal> animalDoCliente = null;
+        List<Animal> animalDoCliente;
         //Testa se tipo é null para saber qual busca usar
         if(tipo == null) {
             animalDoCliente = animalRepository.buscaAnimaisDoCliente(idCliente);
@@ -40,7 +40,7 @@ public class AnimalService {
         }
         //Converte Animal para AnimalSaidaDto
         List<AnimalSaidaDto> listaAnimalDoCliente = animalDoCliente.stream()
-                .map(AnimalSaidaDto::converte)
+                .map(AnimalSaidaDto::build)
                 .collect(Collectors.toList());
         //Se retorno do banco for vazio mensagem de erro
         if(listaAnimalDoCliente.isEmpty()){
