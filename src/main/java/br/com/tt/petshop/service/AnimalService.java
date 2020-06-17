@@ -30,30 +30,21 @@ public class AnimalService {
 
     public List<AnimalSaidaDto> listarAnimais(Integer idCliente, TipoAnimal tipo)
     {
-        if(tipo == null){
-            List<AnimalSaidaDto> animalDoCliente = animalRepository
-                    .buscaAnimaisDoCliente(idCliente)
-                    .stream()
-                    .map(AnimalSaidaDto::converte)
-                    .collect(Collectors.toList());
-            if(animalDoCliente.isEmpty()){
-                throw new ErroDeNegocioException("animal_nao_existe",
-                                                 "Não existem animais para esse cliente.");
-            } else {
-                return animalDoCliente;
-            }
+        List<Animal> animalDoCliente = null;
+        if(tipo == null) {
+            animalDoCliente = animalRepository.buscaAnimaisDoCliente(idCliente);
         } else {
-            List<AnimalSaidaDto> animalDoCliente = animalRepository
-                    .buscaAnimaisDoClientePorTipo(idCliente, tipo)
-                    .stream()
-                    .map(AnimalSaidaDto::converte)
-                    .collect(Collectors.toList());
-            if(animalDoCliente.isEmpty()){
-                throw new ErroDeNegocioException("animal_nao_existe",
-                                                 "Não existem animais deste tipo para esse cliente.");
-            } else {
-                return animalDoCliente;
-            }
+            animalDoCliente = animalRepository.buscaAnimaisDoClientePorTipo(idCliente, tipo);
+        }
+        List<AnimalSaidaDto> listaAnimalDoCliente = animalDoCliente
+                .stream()
+                .map(AnimalSaidaDto::converte)
+                .collect(Collectors.toList());
+        if(listaAnimalDoCliente.isEmpty()){
+            throw new ErroDeNegocioException("animal_nao_existe",
+                                             "Não existem animais para esse cliente.");
+        } else {
+            return listaAnimalDoCliente;
         }
     }
 
