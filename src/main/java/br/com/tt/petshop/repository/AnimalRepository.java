@@ -25,15 +25,12 @@ public interface AnimalRepository extends
     //Query Methods
     //Optional<Animal> findByNomeAndCliente(String nome, Cliente cliente);
 
-
-
     //Query JPQL
     @Query("select a from Animal a where a.dataNascimento = :dataNascimento")
     List<Animal> buscarPorDataDeNascimento(@Param("dataNascimento") LocalDate dataNascimento);
 
     @Query("select a from Animal a join a.cliente c where c.id = :idCliente")
     List<Animal> buscaAnimaisDoCliente(@Param("idCliente") Integer idCliente);
-
 
     @Query("select a from Animal a join a.cliente c where c.id = :idCliente and a.tipo = :tipo")
     List<Animal> buscaAnimaisDoClientePorTipo(@Param("idCliente") Integer idCliente,
@@ -42,7 +39,6 @@ public interface AnimalRepository extends
     @Query("select a from Animal a join a.cliente c where c.id = :idCliente and a.id = :idAnimal")
     Optional<Animal> buscaAnimalDoClientePorId(@Param("idCliente") Integer idCliente,
                                                @Param("idAnimal") Long idAnimal);
-
 
     @Query("select a from Animal a join a.cliente c where c.cpf = :cpf ")
     List<Animal> buscaAnimaisDoClientePorCpf(@Param("cpf") String cpf);

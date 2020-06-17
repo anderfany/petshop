@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ErroNegocioExceptionHandler {
 
     @ExceptionHandler(ErroDeNegocioException.class)
-    public ResponseEntity<MensagemErroDto> trataNegocioException(ErroDeNegocioException e){
+    public ResponseEntity<MensagemErroDto> trataNegocioException(ErroDeNegocioException e) {
         return ResponseEntity
                 .unprocessableEntity()
                 .body(new MensagemErroDto(e.getCodigo(), e.getMessage()));

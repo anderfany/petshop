@@ -10,12 +10,10 @@ public class MensagemErroDto {
     }
 
     public String getCodigo() {
-
         return codigo;
     }
 
     public String getMensagem() {
-
         return mensagem;
     }
 }

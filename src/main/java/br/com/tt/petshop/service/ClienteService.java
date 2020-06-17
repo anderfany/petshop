@@ -27,7 +27,7 @@ public class ClienteService {
         this.cpfValidator = cpfValidator;
     }
 
-    public List<ClienteSaidaDto> listarClientes(){
+    public List<ClienteSaidaDto> listarClientes() {
 
         return this.clienteRepository.listarClientes()
                 .stream()
@@ -39,17 +39,17 @@ public class ClienteService {
     //Poderia estar no Repository também, mas é mais comum no Service.
     public Cliente criarCliente(ClienteEntradaDto clienteParaCriar) {
 
-        if( ! cpfValidator.verificaSeCpfValido(clienteParaCriar.getCpf())){
+        if( ! cpfValidator.verificaSeCpfValido(clienteParaCriar.getCpf())) {
             throw new CpfInvalidoException("O formato do CPF está incorreto");
         }
 
         //Cliente tem que ter no minimo duas partes
-        if(!verificaSeClientePossuiDuasPartes(clienteParaCriar.getNome())){
+        if(!verificaSeClientePossuiDuasPartes(clienteParaCriar.getNome())) {
             throw new ErroDeNegocioException("nome_invalido", "Cliente deve conter nome e sobrenome");
         }
 
         //Cada parte do cliente tem que ter no minimo duas letras
-        if(!verificaSePartesClientePossuiDuasLetras(clienteParaCriar.getNome())){
+        if(!verificaSePartesClientePossuiDuasLetras(clienteParaCriar.getNome())) {
             throw new ErroDeNegocioException("nome_invalido", "Cliente nao pode conter duas letras ou menos");
         }
 

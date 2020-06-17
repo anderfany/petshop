@@ -14,7 +14,7 @@ public class UnidadeRepository {
 
     private JdbcTemplate jdbcTemplate;
 
-    public UnidadeRepository(JdbcTemplate jdbcTemplate){
+    public UnidadeRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -35,7 +35,7 @@ public class UnidadeRepository {
                 );
     }
 
-    public void criarUnidade(UnidadeEntradaDto unidadeDto){
+    public void criarUnidade(UnidadeEntradaDto unidadeDto) {
         String nome = unidadeDto.getNome();
         String endereco = unidadeDto.getEndereco();
         jdbcTemplate.update(
