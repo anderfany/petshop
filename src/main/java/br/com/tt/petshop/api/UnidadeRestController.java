@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class UnidadeRestController {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long idUnidade,
-                                    @RequestBody UnidadeDto unidadeParaAtualizar) {
+                                    @RequestBody @Valid UnidadeEntradaDto unidadeParaAtualizar) {
         unidadeService.atualizar(idUnidade, unidadeParaAtualizar);
         return ResponseEntity.noContent().build();
     }
@@ -45,7 +46,7 @@ public class UnidadeRestController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity criar(@RequestBody UnidadeEntradaDto unidadeParaCriar) {
+    public ResponseEntity criar(@RequestBody @Valid UnidadeEntradaDto unidadeParaCriar) {
         unidadeService.criarUnidade(unidadeParaCriar);
         URI location = URI.create("/unidades/");
         return ResponseEntity.created(location).build();

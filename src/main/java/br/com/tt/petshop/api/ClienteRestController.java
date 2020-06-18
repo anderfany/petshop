@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.print.attribute.standard.Media;
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class ClienteRestController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity criar(@RequestBody ClienteEntradaDto clienteParaCriar) {
+    public ResponseEntity criar(@RequestBody @Valid ClienteEntradaDto clienteParaCriar) {
         Cliente clienteCriado = clienteService.criarCliente(clienteParaCriar);
         String location = String.format("/clientes/%d", clienteCriado.getId());
 
@@ -52,7 +53,7 @@ public class ClienteRestController {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Integer id,
-                                    @RequestBody ClienteEntradaDto clienteParaAtualizar) {
+                                    @RequestBody @Valid ClienteEntradaDto clienteParaAtualizar) {
         clienteService.atualizar(id, clienteParaAtualizar);
         return ResponseEntity.noContent().build();
     }
