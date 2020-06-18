@@ -59,7 +59,7 @@ public class ClienteService {
 
     //Cliente tem que ter no minimo duas partes
     private boolean verificaSeClientePossuiDuasPartes(String nome) {
-        return nome.split(SEPARADOR).length > 2;
+        return nome.split(SEPARADOR).length > 1;
     }
 
     //Cada parte do cliente tem que ter no minimo duas letras
