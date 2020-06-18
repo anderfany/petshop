@@ -31,9 +31,9 @@ public class UnidadeDto {
         return String.format("%s - %s", nome, endereco);
     }
 
-    public void atualizarDadosUnidadeNaMemoria(UnidadeDto unidadeParaAtualizar) {
-        this.nome = unidadeParaAtualizar.nome;
-        this.endereco = unidadeParaAtualizar.endereco;
+    public void atualizarDadosUnidadeNaMemoria(UnidadeEntradaDto unidadeParaAtualizar) {
+        this.nome = unidadeParaAtualizar.getNome();
+        this.endereco = unidadeParaAtualizar.getEndereco();
     }
 
 }

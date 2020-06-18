@@ -34,10 +34,10 @@ public class UnidadeService {
         return unidadeRepository.buscarPorId(idUnidade);
     }
 
-    public void atualizar(Long id, UnidadeDto unidadeParaAtualizar) {
-        UnidadeDto unidadeSalvaNoBano = this.buscarPorId(id);
-        unidadeSalvaNoBano.atualizarDadosUnidadeNaMemoria(unidadeParaAtualizar);
-        unidadeRepository.salvar(unidadeSalvaNoBano);
+    public void atualizar(Long id, UnidadeEntradaDto unidadeParaAtualizar) {
+        UnidadeDto unidadeSalvaNoBanco = this.buscarPorId(id);
+        unidadeSalvaNoBanco.atualizarDadosUnidadeNaMemoria(unidadeParaAtualizar);
+        unidadeRepository.salvar(unidadeSalvaNoBanco);
     }
 
     public void remover(Long id){
