@@ -1,5 +1,7 @@
 package br.com.tt.petshop.service;
 
+import br.com.tt.petshop.cliente.CreditoDto;
+import br.com.tt.petshop.cliente.CreditoRestTemplateClient;
 import br.com.tt.petshop.dto.ClienteEntradaDto;
 import br.com.tt.petshop.dto.ClienteSaidaDto;
 import br.com.tt.petshop.exception.CpfInvalidoException;
@@ -11,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -19,12 +20,16 @@ import java.util.stream.Stream;
 public class ClienteService {
 
     public static String SEPARADOR = " "; //Constante para usar no espaço em branco
-    private ClienteRepository clienteRepository;
-    private CpfValidator cpfValidator;
+    private final ClienteRepository clienteRepository;
+    private final CpfValidator cpfValidator;
+    private final CreditoRestTemplateClient creditoClient;
 
-    public ClienteService(ClienteRepository clienteRepository, CpfValidator cpfValidator) {
+    public ClienteService(ClienteRepository clienteRepository,
+                          CpfValidator cpfValidator,
+                          CreditoRestTemplateClient creditoClient) {
         this.clienteRepository = clienteRepository;
         this.cpfValidator = cpfValidator;
+        this.creditoClient = creditoClient;
     }
 
     public List<ClienteSaidaDto> listarClientes() {
@@ -53,8 +58,19 @@ public class ClienteService {
             throw new ErroDeNegocioException("nome_invalido", "Cliente nao pode conter duas letras ou menos");
         }
 
+        if(possuiPendencia(clienteParaCriar.getCpf())) {
+            throw new ErroDeNegocioException("problema_credito",
+                    "Há um problema com o cadastro no sistema de crédito. Verificar situação do CPF");
+        }
         Cliente clienteConvertidoDtoParaEntidade = new Cliente(clienteParaCriar);
         return clienteRepository.criarCliente(clienteConvertidoDtoParaEntidade);
+    }
+
+    private boolean possuiPendencia(String cpf) {
+        //Consulta a situacao e salva no creditoDto
+        CreditoDto creditoDto = creditoClient.consultaSituacao(cpf);
+        //Chama o isNegativado passando o creditoDto para validar se eh negativado
+        return creditoDto.isNegativado();
     }
 
     //Cliente tem que ter no minimo duas partes

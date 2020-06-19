@@ -25,7 +25,7 @@ class ClienteServiceTest {
     void inicializacao(){
         clientRepositoryMock = Mockito.mock(ClienteRepository.class);
         cpfValidatorMock = Mockito.mock(CpfValidator.class);
-        clienteService = new ClienteService(clientRepositoryMock, cpfValidatorMock);
+        clienteService = new ClienteService(clientRepositoryMock, cpfValidatorMock, creditoClient);
     }
 
     @Test
