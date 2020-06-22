@@ -13,6 +13,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "TB_ATENDIMENTO")
 public class Atendimento {
 
+    //Construtor para o Hibernate
+    Atendimento(){
+    }
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "ID")
@@ -20,9 +24,6 @@ public class Atendimento {
 
     @Column(name = "DESCRICAO")
     private String descricao;
-
-    @Column(name = "FUNCIONARIO")
-    private String funcionario;
 
     @Column(name = "DATA_HORA")
     private LocalDate dataHora;
@@ -33,6 +34,10 @@ public class Atendimento {
 
     @Column(name = "VALOR")
     private BigDecimal valorTotal;
+
+    @JoinColumn(name = "ID_FUNCIONARIO")
+    @OneToOne
+    private Funcionario funcionario;
 
     @JoinColumn(name = "ID_ANIMAL")
     @ManyToOne
