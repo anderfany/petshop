@@ -7,6 +7,7 @@ import br.com.tt.petshop.enumaration.TipoAnimal;
 import javax.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -36,6 +37,9 @@ public class Animal {
     @JoinColumn(name = "ID_CLIENTE")
     @ManyToOne
     private Cliente cliente;
+
+    @OneToMany(mappedBy = "animal")
+    private List<Atendimento> atendimentos;
 
     //Getters
     public Long getId() { return id; }

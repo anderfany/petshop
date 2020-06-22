@@ -1,5 +1,6 @@
 package br.com.tt.petshop.cliente;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,7 +11,8 @@ public class CreditoRestTemplateClient {
 
     private final RestTemplate restTemplate;
 
-    public CreditoRestTemplateClient(RestTemplate restTemplate){
+    public CreditoRestTemplateClient(RestTemplate restTemplate,
+                                     @Value("{app.servicos.url}") String creditoUrl){
         this.restTemplate = restTemplate;
     }
     /*
