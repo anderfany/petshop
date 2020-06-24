@@ -1,6 +1,7 @@
 package br.com.tt.petshop.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -18,9 +19,18 @@ public class Funcionario {
     private Long id;
 
     @Column(name = "NOME")
+    @NotBlank
     private String nome;
 
     @OneToOne(mappedBy = "funcionario")
     private Atendimento atendimento;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
 
 }

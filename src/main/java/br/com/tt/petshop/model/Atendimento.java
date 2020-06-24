@@ -3,6 +3,8 @@ package br.com.tt.petshop.model;
 import br.com.tt.petshop.enumaration.TipoAnimal;
 import br.com.tt.petshop.enumaration.TipoServico;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -23,9 +25,11 @@ public class Atendimento {
     private Long id;
 
     @Column(name = "DESCRICAO")
+    @NotBlank
     private String descricao;
 
     @Column(name = "DATA_HORA")
+    @NotBlank
     private LocalDate dataHora;
 
     @Column(name = "TIPO")
@@ -33,13 +37,41 @@ public class Atendimento {
     private TipoServico tipo;
 
     @Column(name = "VALOR")
+    @Positive
     private BigDecimal valorTotal;
 
     @JoinColumn(name = "ID_FUNCIONARIO")
     @OneToOne
+    @NotBlank
     private Funcionario funcionario;
 
     @JoinColumn(name = "ID_ANIMAL")
     @ManyToOne
+    @NotBlank
     private Animal animal;
+
+    public Long getId() { return id; }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public LocalDate getDataHora() {
+        return dataHora;
+    }
+
+    public TipoServico getTipo() {
+        return tipo;
+    }
+
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+
+    public Funcionario getFuncionario() { return funcionario; }
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
 }
