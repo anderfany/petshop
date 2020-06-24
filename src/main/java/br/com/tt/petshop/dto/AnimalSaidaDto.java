@@ -22,6 +22,7 @@ public class AnimalSaidaDto {
     }
 
     //Conversao para do Repository -> Service
+    //Construtor principal fica escondido e o Metodo por build que fica exposto para a construcao do DTO
     public static AnimalSaidaDto build(Animal animal){
         return new AnimalSaidaDto(animal);
     }
