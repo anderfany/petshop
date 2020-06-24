@@ -32,7 +32,9 @@ public class Cliente {
     private List<Animal> animais;
 
     //Construtor
-    public Cliente(ClienteEntradaDto clienteEntrada) { this.atualizarDadosClienteNaMemoria(clienteEntrada); }
+    public Cliente(ClienteEntradaDto clienteEntrada) {
+        this.atualizarDadosClienteNaMemoria(clienteEntrada);
+    }
 
     //Getters
     public Integer getId() {
@@ -45,7 +47,7 @@ public class Cliente {
 
     public String getCpf() { return cpf; }
 
-    //Poderia ir para uma classe Mapper???
+    //É invocado pelo construtor para novos e atualizacao
     public void atualizarDadosClienteNaMemoria(ClienteEntradaDto clienteParaAtualizar) {
         this.nome = clienteParaAtualizar.getNome();
         this.cpf = clienteParaAtualizar.getCpf();
