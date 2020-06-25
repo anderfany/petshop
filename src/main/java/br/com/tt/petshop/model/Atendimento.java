@@ -1,13 +1,12 @@
 package br.com.tt.petshop.model;
 
-import br.com.tt.petshop.enumaration.TipoAnimal;
 import br.com.tt.petshop.enumaration.TipoServico;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -29,8 +28,7 @@ public class Atendimento {
     private String descricao;
 
     @Column(name = "DATA_HORA")
-    @NotBlank
-    private LocalDate dataHora;
+    private LocalDateTime dataHora;
 
     @Column(name = "TIPO")
     @Enumerated(EnumType.STRING)
@@ -40,10 +38,14 @@ public class Atendimento {
     @Positive
     private BigDecimal valorTotal;
 
-    @JoinColumn(name = "ID_FUNCIONARIO")
-    @OneToOne
+//    @JoinColumn(name = "ID_FUNCIONARIO")
+//    @OneToOne
+//    @NotBlank
+//    private Funcionario funcionario;
+
+    @Column(name = "FUNCIONARIO")
     @NotBlank
-    private Funcionario funcionario;
+    private String funcionario;
 
     @JoinColumn(name = "ID_ANIMAL")
     @ManyToOne
@@ -56,7 +58,7 @@ public class Atendimento {
         return descricao;
     }
 
-    public LocalDate getDataHora() {
+    public LocalDateTime getDataHora() {
         return dataHora;
     }
 
@@ -68,10 +70,26 @@ public class Atendimento {
         return valorTotal;
     }
 
-    public Funcionario getFuncionario() { return funcionario; }
+    public String getFuncionario() { return funcionario; }
 
-    public Animal getAnimal() {
-        return animal;
+    public Animal getAnimal() { return animal; }
+
+    //Construtor
+    public Atendimento(Long id,
+                       LocalDateTime dataHora,
+                       TipoServico tipo,
+                       String descricao,
+                       String funcionario,
+                       BigDecimal valorTotal,
+                       Animal animal) {
+        this.id = id;
+        this.descricao = descricao;
+        this.dataHora = dataHora;
+        this.tipo = tipo;
+        this.valorTotal = valorTotal;
+        this.funcionario = funcionario;
+        this.animal = animal;
     }
+
 
 }

@@ -71,5 +71,10 @@ public class AnimalService {
     //public Animal buscarPorAnimalECliente(String nome, Cliente cliente){
     //    return animalRepository.findByNomeAndCliente(nome, cliente);
     //}
+    public Animal buscarPorId(Long idAnimal) {
+        return animalRepository
+                .findById(idAnimal)
+                .orElseThrow(() -> new ErroDeNegocioException("animal_inexistente", "Animal inexistente!"));
+    }
 
 }

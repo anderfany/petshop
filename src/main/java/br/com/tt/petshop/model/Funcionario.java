@@ -22,9 +22,10 @@ public class Funcionario {
     @NotBlank
     private String nome;
 
-    @OneToOne(mappedBy = "funcionario")
-    private Atendimento atendimento;
+//    @OneToOne(mappedBy = "funcionario")
+//    private Atendimento atendimento;
 
+    //Getters
     public Long getId() {
         return id;
     }
@@ -32,5 +33,8 @@ public class Funcionario {
     public String getNome() {
         return nome;
     }
+
+    //Construtor
+
 
 }
