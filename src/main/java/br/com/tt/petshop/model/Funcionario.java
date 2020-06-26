@@ -22,6 +22,10 @@ public class Funcionario {
     @NotBlank
     private String nome;
 
+    @Column(name = "CARGO")
+    @NotBlank
+    private String cargo;
+
 //    @OneToOne(mappedBy = "funcionario")
 //    private Atendimento atendimento;
 
@@ -32,6 +36,10 @@ public class Funcionario {
 
     public String getNome() {
         return nome;
+    }
+
+    public String getCargo() {
+        return cargo;
     }
 
     //Construtor
