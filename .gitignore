@@ -5,6 +5,9 @@ build/
 !**/src/main/**
 !**/src/test/**
 
+### Shell ####
+*.swp
+
 ### STS ###
 .apt_generated
 .classpath

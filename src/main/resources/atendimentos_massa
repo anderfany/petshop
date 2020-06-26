@@ -1,0 +1,10 @@
+{ "tipo": "BANHO", "descricao": "Banho e tosa higienica", "valorTotal": 50.00, "funcionario": "Gilberto", "idAnimal": 1 }
+{ "tipo": "TOSA", "descricao": "Banho e tosa completa", "valorTotal": 70.00, "funcionario": "Roberta", "idAnimal": 2 }
+{ "tipo": "BANHO", "descricao": "Banho", "valorTotal": 35.00, "funcionario": "Anderson", "idAnimal": 3 }
+{ "tipo": "VACINA", "descricao": "Polivalente V10", "valorTotal": 120.00, "funcionario": "Anelise", "idAnimal": 5 }
+{ "tipo": "VACINA", "descricao": "Giardia", "valorTotal": 120.00, "funcionario": "Anelise", "idAnimal": 5 }
+{ "tipo": "VACINA", "descricao": "Raiva", "valorTotal": 60.00, "funcionario": "Anelise", "idAnimal": 5 }
+{ "tipo": "CONSULTA", "descricao": "Revisao periodica", "valorTotal": 80.00, "funcionario": "Anelise", "idAnimal": 5 }
+{ "tipo": "BANHO", "descricao": "Banho e tosa higienica", "valorTotal": 50.00, "funcionario": "Gilberto", "idAnimal": 6 }
+{ "tipo": "TOSA", "descricao": "Banho e tosa completa", "valorTotal": 80.00, "funcionario": "Roberta", "idAnimal": 7 }
+{ "tipo": "BANHO", "descricao": "Banho", "valorTotal": 35.00, "funcionario": "Anderson", "idAnimal": 8 }

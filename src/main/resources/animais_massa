@@ -1,0 +1,13 @@
+{ "nome": "Zaira", "data_nascimento": "10-03-2014", "tipo": "MAMIFERO" };1
+{ "nome": "Zola", "data_nascimento": "10-03-2014", "tipo": "MAMIFERO" };1
+{ "nome": "Urso", "data_nascimento": "10-03-2017", "tipo": "MAMIFERO" };2
+{ "nome": "Mel", "data_nascimento": "10-03-2014", "tipo": "MAMIFERO" };3
+{ "nome": "Alana", "data_nascimento": "10-03-2015", "tipo": "AVE" };4
+{ "nome": "Olavo", "data_nascimento": "10-03-2016", "tipo": "MAMIFERO" };5
+{ "nome": "Akita", "data_nascimento": "10-03-2017", "tipo": "MAMIFERO" };5
+{ "nome": "Akita", "data_nascimento": "10-03-2018", "tipo": "MAMIFERO" };5
+{ "nome": "Brutus", "data_nascimento": "10-03-2018", "tipo": "MAMIFERO" };6
+{ "nome": "Thor", "data_nascimento": "10-03-2016", "tipo": "REPTIL" };7
+{ "nome": "Zog", "data_nascimento": "10-03-2019", "tipo": "MAMIFERO" };8
+{ "nome": "Odin", "data_nascimento": "10-03-2014", "tipo": "REPTIL" };9
+{ "nome": "Fiona", "data_nascimento": "10-03-2020", "tipo": "MAMIFERO" };10

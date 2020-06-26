@@ -14,6 +14,15 @@ insert into TB_CLIENTE (nro_cpf, txt_nome) values ('881.990.690-23', 'Nadia Jaqu
 insert into TB_CLIENTE (nro_cpf, txt_nome) values ('173.779.530-20', 'Odolir Pietro');
 insert into TB_CLIENTE (nro_cpf, txt_nome) values ('640.109.110-00', 'José Avelino');
 insert into TB_CLIENTE (nro_cpf, txt_nome) values ('497.865.660-50', 'Amadeu Rosalino');
+insert into TB_CLIENTE (nro_cpf, txt_nome) values ('497.865.660-50', 'Anderson Martins');
+insert into TB_CLIENTE (nro_cpf, txt_nome) values ('497.865.660-50', 'Anastasio Dos Santos');
+insert into TB_CLIENTE (nro_cpf, txt_nome) values ('497.865.660-50', 'Priscila Gomersinda');
+insert into TB_CLIENTE (nro_cpf, txt_nome) values ('497.865.660-50', 'Matheus Amadeus');
+insert into TB_CLIENTE (nro_cpf, txt_nome) values ('497.865.660-50', 'Geraldo Rivaldo Santos');
+insert into TB_CLIENTE (nro_cpf, txt_nome) values ('497.865.660-50', 'Chuasneguer Silva');
+insert into TB_CLIENTE (nro_cpf, txt_nome) values ('497.865.660-50', 'Antonio Garibaldo');
+
+
 
 
 --insert into TB_ANIMAL (nome, data_nascimento, tipo) values ('Zaira', TO_DATE( '21-01-2012', 'DD-MM-YYYY' ), 'REPTIL');
