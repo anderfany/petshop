@@ -3,6 +3,7 @@ package br.com.tt.petshop.model;
 import br.com.tt.petshop.enumaration.TipoServico;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 import java.math.BigDecimal;
@@ -48,8 +49,8 @@ public class Atendimento {
     private String funcionario;
 
     @JoinColumn(name = "ID_ANIMAL")
-    @ManyToOne
-    @NotBlank
+    @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull
     private Animal animal;
 
     public Long getId() { return id; }
