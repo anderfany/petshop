@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://ec2-52-202-66-191.compute-1.amazonaws.com
+    username: gklkjljwdbnaeh
+    password: senha
+    maximumPoolSize: 1
+    hikari:
+      connectionTimeout: 5000
+      idleTimeout: 1000
+      maxLifetime: 30000
+      minimumIdle: 0
+      maximumPoolSize: 1
+  jpa:
+    hibernate.ddl-auto: none

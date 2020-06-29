@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+app:
+  swagger:
+    enable: true
+  servicos:
+    credito:
+      url: https://imersao-credito-api.herokuapp.com/credito/{cpf}
+      host: https://imersao-credito-api.herokuapp.com
+
+logging:
+  level:
+    root: info
+    com.zaxxer.hikari: debug
+    org.springframework.web.servlet.mvc.support: info
+
+spring:
+  jpa:
+    show-sql: true
+    hibernate.format_sql: true
