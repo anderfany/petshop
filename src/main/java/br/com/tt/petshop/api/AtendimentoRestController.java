@@ -6,6 +6,7 @@ import br.com.tt.petshop.dto.ClienteEntradaDto;
 import br.com.tt.petshop.model.Atendimento;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.service.AtendimentoService;
+import io.swagger.annotations.Api;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/atendimentos")
+@Api(tags = "atendimento")
 public class AtendimentoRestController {
 
     //Atributos

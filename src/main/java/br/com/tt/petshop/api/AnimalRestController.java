@@ -5,6 +5,8 @@ import br.com.tt.petshop.dto.AnimalSaidaDto;
 import br.com.tt.petshop.enumaration.TipoAnimal;
 import br.com.tt.petshop.model.Animal;
 import br.com.tt.petshop.service.AnimalService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/clientes/{idCliente}/animais")
+@Api(tags = "animal")
 public class AnimalRestController {
 
     //Atributo
@@ -22,10 +25,10 @@ public class AnimalRestController {
 
     //Construtor
     public AnimalRestController(AnimalService animalService) {
-
         this.animalService = animalService;
     }
 
+    @ApiOperation(value = "Listar animais")
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<AnimalSaidaDto> listarPorTipo(@PathVariable("idCliente") Integer idCliente,
                                 @RequestParam(required = false, name = "tipo") TipoAnimal tipo) {
