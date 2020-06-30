@@ -1,7 +1,10 @@
 package br.com.tt.petshop.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.PathSelectors;
@@ -14,11 +17,16 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 
 //Somente em nao-prod
-@Profile("!prod")
+//@Profile("!prod")
 
+//De acordo com a configuração app.swagger.enable, sendo o padrão TRUE
+@RefreshScope
+//@ConditionalOnProperty(value = "app.swagger.enable", havingValue = "true")
 @ConditionalOnExpression("${app.swagger.enable:true}")
 public class SwaggerConfig {
 
+    @Bean
+    @Lazy
     public Docket docketV1() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
